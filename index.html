@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>VAR Battle</title>
+  <link rel="stylesheet" href="css/app.css">
+  <script src="js/array.prototype.find.js"></script>
+  <script src="js/app.js"></script>
+</head>
+<body>  
+  <div class="container">
+    <div class="players">
+      <div id="p1"><span class="caret" hidden></span></div>
+      <div class="vs"></div>
+      <div id="p2"><span class="caret" hidden></span></div>
+      <button id="dice-p1" class="dice"></button>
+      <button id="dice-p2" class="dice"></button>
+    </div>
+    <div class="playground">
+      <div class="row">
+        <div class="square" data-index="0"></div>
+        <div class="square" data-index="1"></div>
+        <div class="square" data-index="2"></div>
+      </div>
+      <div class="row">
+        <div class="square" data-index="3"></div>
+        <div class="square" data-index="4"></div>
+        <div class="square" data-index="5"></div>
+      </div>
+      <div class="row">
+        <div class="square" data-index="6"></div>
+        <div class="square" data-index="7"></div>
+        <div class="square" data-index="8"></div>
+      </div>
+      <div class="overlay">
+        <button class="btn start">Start</button>
+        <div class="winner" hidden>
+          <img class="badge" src="images/win.svg" alt="Winner">
+          <div class="logo"></div>
+        </div>
+      </div>
+    </div>
+    <div class="controls">
+      <button class="btn reset">Reset</button>
+    </div>
+    <div class="credits">
+      <div class="twhy">
+        Made by <a class="github" href="https://github.com/twhy" target="_blank">twhy</a>
+        微博: <a href="https://weibo.com/tomls" target="_blank">Tom老撕</a>
+      </div>
+      <div class="icon">
+        Dice icon made by
+        <a href="http://www.flaticon.com/authors/maxim-basinski" 
+        title="Maxim Basinski">Maxim Basinski</a> and win icon made by <a href="http://www.freepik.com" title="Freepik">Freepik</a>
+        from <a href="http://www.flaticon.com" title="Flaticon">flaticon.com</a>
+        is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
