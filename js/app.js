@@ -199,10 +199,10 @@
   }
 
   Game.prototype.isEnded = function() {
-    return this.getWinner() || this.isAllSquaredUsed();
+    return this.getWinner() || this.isAllSquaresUsed();
   }
 
-  Game.prototype.isAllSquaredUsed = function () {
+  Game.prototype.isAllSquaresUsed = function () {
     return !this.squares.find(function (s) { return s.val === 0 });
   }
 
