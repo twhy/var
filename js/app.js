@@ -1,9 +1,9 @@
 (function () {
 
-  function Player(el, name) {
-    this.$el = el;
+  function Player(name, el) {
     this.name = name;
     this.active = false;
+    this.$el = el;
     this.$caret = this.$el.querySelector('.caret');
   }
 
@@ -48,8 +48,8 @@
     this.$el = el;
     this.state = 'init';
 
-    this.p1 = new Player(document.querySelector('#p1'), localStorage.p1 || Player.random());
-    this.p2 = new Player(document.querySelector('#p2'), localStorage.p2 || Player.random(this.p1.name));
+    this.p1 = new Player(Player.random(), document.querySelector('#p1'));
+    this.p2 = new Player(Player.random(this.p1.name), document.querySelector('#p2'));
 
     this.p1.render();
     this.p2.render();
