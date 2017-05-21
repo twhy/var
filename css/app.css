@@ -119,23 +119,11 @@ a {
   transition: all .5s ease;
   align-items: center;
   justify-content: center;
+  background: rgba(255, 255, 255, .9);
 }
 
 .playground .overlay.minimize {
   transform: scale(0);
-}
-
-.playground .overlay:after {
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  content: '';
-  opacity: .9;
-  z-index: 1;
-  display: block;
-  position: absolute;
-  background: #fff;
 }
 
 .square {
