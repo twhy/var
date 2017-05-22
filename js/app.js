@@ -59,6 +59,7 @@
 
     this.$winner = this.$el.querySelector('.winner');
     this.$overlay = this.$el.querySelector('.overlay');
+    this.$playground = this.$el.querySelector('.playground');
 
     this.$start = this.$el.querySelector('.btn.start');
 
@@ -71,11 +72,8 @@
     this.$start.addEventListener('click', this.onClickStart.bind(this));
     this.$reset.addEventListener('click', this.onClickReset.bind(this));
 
-    var self = this;
+    this.$playground.addEventListener('click', this.onClickSquare.bind(this));
     var $squares = [].slice.call(this.$el.querySelectorAll('.square'));
-    $squares.forEach(function (square) {
-      square.addEventListener('click', self.onClickSquare.bind(self));
-    });
     this.squares = $squares.map(function (element) {
       return new Square(element);
     });
@@ -133,6 +131,7 @@
   }
 
   Game.prototype.onClickSquare = function (e) {
+    if (!e.target.matches('.square')) return;
     if (this.state !== 'start') return;
     if (this.isEnded()) return;
     if (e.target.classList.length > 1) return;
