@@ -66,8 +66,9 @@
     this.$reset = this.$el.querySelector('.btn.reset');
     this.$reset.disabled = true;
 
-    this.$diceP1.addEventListener('click', this.onClickDiceP1.bind(this));
-    this.$diceP2.addEventListener('click', this.onClickDiceP2.bind(this));
+    var onClickDice = this.onClickDice.bind(this);
+    this.$diceP1.addEventListener('click', onClickDice);
+    this.$diceP2.addEventListener('click', onClickDice);
 
     this.$start.addEventListener('click', this.onClickStart.bind(this));
     this.$reset.addEventListener('click', this.onClickReset.bind(this));
@@ -120,13 +121,9 @@
     this.$diceP2.hidden = !!hidden;
   }
 
-  Game.prototype.onClickDiceP1 = function (e) {
-    this.p1.reset(Player.random(this.p1.name));
-    this.$start.disabled = (this.p1.name === this.p2.name);
-  }
-
-  Game.prototype.onClickDiceP2 = function (e) {
-    this.p2.reset(Player.random(this.p2.name));
+  Game.prototype.onClickDice = function(e) {
+    if (e.target.matches('#dice-p1')) this.p1.reset(Player.random(this.p1.name));
+    if (e.target.matches('#dice-p2')) this.p2.reset(Player.random(this.p2.name));
     this.$start.disabled = (this.p1.name === this.p2.name);
   }
 
@@ -135,7 +132,9 @@
     if (this.state !== 'start') return;
     if (this.isEnded()) return;
     if (e.target.classList.length > 1) return;
-    this.squares[e.target.dataset.index].set(this.activePlayer().name, this.p1.active ? 1 : -1);
+    this.squares[e.target.dataset.index].set(
+      this.activePlayer().name, this.p1.active ? 1 : -1);
+
     var winner = this.getWinner();
     if (winner) {
       this.showWinner(winner);
@@ -149,13 +148,8 @@
   }
 
   Game.prototype.switchPlayer = function () {
-    if (this.p1.active) {
-      this.p1.setActive(false);
-      this.p2.setActive(true);
-    } else {
-      this.p1.setActive(true);
-      this.p2.setActive(false);
-    }
+    this.p1.setActive(!this.p1.active)
+    this.p2.setActive(!this.p2.active);
   };
 
   Game.prototype.resetSquares = function () {
@@ -198,7 +192,7 @@
   }
 
   Game.prototype.isEnded = function() {
-    return this.getWinner() || this.isAllSquaresUsed();
+    return !!this.getWinner() || this.isAllSquaresUsed();
   }
 
   Game.prototype.isAllSquaresUsed = function () {
