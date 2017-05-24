@@ -105,6 +105,7 @@ a {
   position: relative;
   border: 1px solid #ddd;
   box-shadow: 0 0 2px #ccc;
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
 }
 
 .playground .overlay {
